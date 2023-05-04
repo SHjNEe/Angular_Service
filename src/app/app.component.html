@@ -1,19 +1,9 @@
+<app-header (featureSelected)="onNavigate($event)"></app-header>
 <div class="container">
   <div class="row">
-    <div class="col-xs-12 col-md-8 col-md-offset-2">
-      <app-new-account></app-new-account>
-      <!-- <app-new-account (accountAdded)="onAccountAdded($event)"></app-new-account> -->
-      <hr />
-      <!-- <app-account
-        *ngFor="let acc of accounts; let i = index"
-        [account]="acc"
-        [id]="i"
-        (statusChanged)="onStatusChanged($event)"></app-account> -->
-      <app-account
-        *ngFor="let acc of accounts; let i = index"
-        [account]="acc"
-        [id]="i"
-      ></app-account>
+    <div class="col-md-12">
+      <app-recipes *ngIf="loadedFeature === 'recipe'"></app-recipes>
+      <app-shopping-list *ngIf="loadedFeature !== 'recipe'"></app-shopping-list>
     </div>
   </div>
 </div>
