@@ -6,6 +6,7 @@ import { NgForm } from '@angular/forms';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
 })
+
 export class AppComponent {
   @ViewChild('form') form: NgForm;
   suggestUserName() {
@@ -15,6 +16,7 @@ export class AppComponent {
   //     console.log(form);
   //     console.log(form.value);
   //   }
+
   onSubmit() {
     console.log(this.form);
     console.log(this.form.value);
