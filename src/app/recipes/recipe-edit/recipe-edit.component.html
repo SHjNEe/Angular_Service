@@ -10,7 +10,9 @@
           >
             Save
           </button>
-          <button type="button" class="btn btn-danger">Cancel</button>
+          <button type="button" class="btn btn-danger" (click)="onCancel()">
+            Cancel
+          </button>
         </div>
       </div>
       <div class="row">
@@ -37,10 +39,17 @@
               class="form-control"
               formControlName="imagePath"
               placeholder=""
+              #imagePath
             />
           </div>
         </div>
       </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <img [src]="imagePath.value" class="img-responsive" alt="" />
+        </div>
+      </div>
+
       <div class="row">
         <div class="col-xs-12">
           <img src="" alt="" class="img-responsive" />
@@ -90,7 +99,9 @@
               </div>
             </div>
             <div class="col-xs-2">
-              <button class="btn btn-danger">X</button>
+              <button (click)="onDeleteIngredient(i)" class="btn btn-danger">
+                X
+              </button>
             </div>
           </div>
           <hr />
