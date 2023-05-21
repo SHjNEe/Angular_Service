@@ -4,10 +4,18 @@
   </div>
 </div>
 <hr />
+<input type="text" [(ngModel)]="filterStatus" />
+<hr />
+<div>
+  {{ appStatus | async }}
+</div>
 <div class="row">
   <div class="col-xs-12">
     <app-recipe-item
-      *ngFor="let recipeEl of recipes; let i = index"
+      *ngFor="
+        let recipeEl of recipes | filter : filterStatus : 'name';
+        let i = index
+      "
       [recipe]="recipeEl"
       [index]="i"
     ></app-recipe-item>

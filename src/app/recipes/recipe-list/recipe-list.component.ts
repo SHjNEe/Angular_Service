@@ -19,6 +19,14 @@ import { Subscription } from "rxjs";
 export class RecipeListComponent implements OnInit, OnDestroy {
   recipes: Recipe[];
   subscription: Subscription;
+  filterStatus: "";
+
+  //Async pipe
+  appStatus = new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve("Test");
+    }, 1000);
+  });
 
   constructor(
     private recipeService: RecipeService,
