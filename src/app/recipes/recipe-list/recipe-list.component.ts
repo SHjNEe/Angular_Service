@@ -22,11 +22,11 @@ export class RecipeListComponent implements OnInit, OnDestroy {
   filterStatus: "";
 
   //Async pipe
-  appStatus = new Promise((resolve, reject) => {
-    setTimeout(() => {
-      resolve("Test");
-    }, 1000);
-  });
+  // appStatus = new Promise((resolve, reject) => {
+  //   setTimeout(() => {
+  //     resolve("Test");
+  //   }, 1000);
+  // });
 
   constructor(
     private recipeService: RecipeService,
