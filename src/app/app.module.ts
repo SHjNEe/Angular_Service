@@ -20,6 +20,8 @@ import { RecipeEditComponent } from "./recipes/recipe-edit/recipe-edit.component
 import { ShortenPipe } from "./pipes/shorten.pipe";
 import { FilterPipe } from "./pipes/filter.pipe";
 import { DataStorageService } from "./shared/data-storage.service";
+import { AuthComponent } from "./auth/auth.component";
+import { LoadingSpinner } from "./shared/loading-spiner/loading-spinner.component";
 
 @NgModule({
   declarations: [
@@ -34,6 +36,8 @@ import { DataStorageService } from "./shared/data-storage.service";
     DropdownDirective,
     RecipeStartComponent,
     RecipeEditComponent,
+    AuthComponent,
+    LoadingSpinner,
     ShortenPipe,
     FilterPipe,
   ],
