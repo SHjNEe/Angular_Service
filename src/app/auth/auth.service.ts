@@ -1,4 +1,4 @@
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpErrorResponse } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { catchError } from "rxjs/operators";
 import { throwError } from "rxjs";
@@ -29,16 +29,7 @@ export class AuthService {
       )
       .pipe(
         catchError((error) => {
-          let errorMessage = "An unknow error occurred! ";
-          if (!error.error || !error.error.error) {
-            return throwError(errorMessage);
-          }
-          switch (error.error.error.message) {
-            case "EMAIL_EXISTS": {
-              errorMessage = "This email exists already !!";
-            }
-          }
-          return throwError(errorMessage);
+          return this.handleError(error);
         })
       );
   }
@@ -52,20 +43,39 @@ export class AuthService {
           returnSecureToken: true,
         }
       )
-      .pipe(
-        catchError((error) => {
-          let errorMessage = "An unknow error occurred! ";
-          if (!error.error || !error.error.error) {
-            return throwError(errorMessage);
-          }
-          switch (error.error.error.message) {
-            case "EMAIL_EXISTS": {
-              errorMessage = "This email exists already !!";
-            }
-          }
-          return throwError(errorMessage);
-        })
-      );
+      .pipe(catchError(this.handleError));
+  }
+  private handleError(error: HttpErrorResponse) {
+    let errorMessage = "An unknow error occurred! ";
+    if (!error.error || !error.error.error) {
+      return throwError(errorMessage);
+    }
+    switch (error.error.error.message) {
+      case "EMAIL_EXISTS": {
+        errorMessage =
+          "The email address is already in use by another account !!";
+        break;
+      }
+      case "EMAIL_NOT_FOUND": {
+        errorMessage =
+          "There is no user record corresponding to this identifier !!";
+        break;
+      }
+      case "INVALID_PASSWORD": {
+        errorMessage =
+          "The password is invalid or the user does not have a password !!";
+        break;
+      }
+      case "USER_DISABLED": {
+        errorMessage =
+          "The user account has been disabled by an administrator !!";
+        break;
+      }
+      default: {
+        break;
+      }
+    }
+    return throwError(errorMessage);
   }
 }
 // https://identitytoolkit.googleapis.com/v1/accounts:signInWithCustomToken?key=[API_KEY]
