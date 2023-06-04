@@ -10,7 +10,7 @@ import { AuthComponent } from "./auth/auth.component";
 import { AuthGuard } from "./auth/auth.guard";
 
 // Create a new route guard that combines multiple guards
-const canActivateChildRoutes: Route["canActivateChild"] = [AuthGuard];
+// const canActivateChildRoutes: Route["canActivateChild"] = [AuthGuard];
 
 // Define your routes
 const appRoutes: Routes = [
@@ -26,7 +26,9 @@ const appRoutes: Routes = [
   {
     path: "recipes",
     component: RecipesComponent,
-    canActivateChild: canActivateChildRoutes, // Use the combined guard for child routes
+    canActivate: [AuthGuard],
+
+    // canActivateChild: canActivateChildRoutes, // Use the combined guard for child routes
     children: [
       { path: "", component: RecipeStartComponent },
       { path: "new", component: RecipeEditComponent },

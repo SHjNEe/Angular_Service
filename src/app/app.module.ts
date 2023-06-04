@@ -23,6 +23,8 @@ import { DataStorageService } from "./shared/data-storage.service";
 import { AuthComponent } from "./auth/auth.component";
 import { LoadingSpinner } from "./shared/loading-spiner/loading-spinner.component";
 import { AuthInterceptorService } from "./auth/auth-interceptor.service";
+import { AlertComponent } from "./shared/alert/alert.component";
+import { PlaceholderDirective } from "./shared/placeholder/placeholder.directive";
 
 @NgModule({
   declarations: [
@@ -41,6 +43,8 @@ import { AuthInterceptorService } from "./auth/auth-interceptor.service";
     LoadingSpinner,
     ShortenPipe,
     FilterPipe,
+    AlertComponent,
+    PlaceholderDirective,
   ],
   imports: [
     BrowserModule,
@@ -60,5 +64,6 @@ import { AuthInterceptorService } from "./auth/auth-interceptor.service";
     },
   ], //DataStorageService was imported by {providedIn: 'root'}
   bootstrap: [AppComponent],
+  entryComponents: [AlertComponent],
 })
 export class AppModule {}
