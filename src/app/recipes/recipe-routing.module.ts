@@ -13,7 +13,7 @@ import { RecipesResolverService } from "./recipes-resolver.service";
 // Define your routes
 const recipesRoutes: Routes = [
   {
-    path: "recipes",
+    path: "",
     component: RecipesComponent,
     canActivate: [AuthGuard],
 
