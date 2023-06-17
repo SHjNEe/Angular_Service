@@ -13,6 +13,7 @@ import { SharedModule } from "./shared/shared.module";
 import { CoreModule } from "./core.module";
 import { AuthModule } from "./auth/auth.module";
 import { LoggingService } from "./logging.service";
+import { DetailsComponents } from "./standalone/detail.component";
 
 @NgModule({
   declarations: [AppComponent, HeaderComponent],
@@ -24,6 +25,7 @@ import { LoggingService } from "./logging.service";
     AppRoutingModule,
     SharedModule,
     CoreModule,
+    DetailsComponents,
   ],
   bootstrap: [AppComponent],
   entryComponents: [AlertComponent],
