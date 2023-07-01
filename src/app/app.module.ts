@@ -14,7 +14,7 @@ import { CoreModule } from "./core.module";
 import { AuthModule } from "./auth/auth.module";
 import { LoggingService } from "./logging.service";
 import { DetailsComponents } from "./standalone/detail.component";
-
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 @NgModule({
   declarations: [AppComponent, HeaderComponent],
   imports: [
@@ -26,6 +26,7 @@ import { DetailsComponents } from "./standalone/detail.component";
     SharedModule,
     CoreModule,
     DetailsComponents,
+    BrowserAnimationsModule,
   ],
   bootstrap: [AppComponent],
   entryComponents: [AlertComponent],
